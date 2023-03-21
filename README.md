@@ -1,6 +1,8 @@
+COMPOSER INSTALL
+
 ## MVP
 
-Inscirpiton - Connexion - Annonce
+Inscription - Connexion - Annonce
 
 ## RESERVATION
 
@@ -8,7 +10,7 @@ Prix - date
 
 ## FILTRE
 
-Filtre classique - barre de recherche
+Filtre classique - barre de recherche - fitre geoloc
 
 ## MAP
 
