@@ -37,13 +37,13 @@ class Appartment
 
     #[ORM\ManyToOne(inversedBy: 'appartments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?category $category = null;
+    private ?Category $category = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'appartments')]
-    private ?user $addBy = null;
+    private ?User $addBy = null;
 
     // #[ORM\ManyToOne(inversedBy: 'appartment', cascade: ['persist', 'remove'])]
     // #[ORM\JoinColumn(nullable: false)]
@@ -126,12 +126,12 @@ class Appartment
         return $this;
     }
 
-    public function getCategory(): ?category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    public function setCategory(?category $category): self
+    public function setCategory(?Category $category): self
     {
         $this->category = $category;
 
@@ -162,12 +162,12 @@ class Appartment
     //     return $this;
     // }
 
-    public function getAddBy(): ?user
+    public function getAddBy(): ?User
     {
         return $this->addBy;
     }
 
-    public function setAddBy(?user $addBy): self
+    public function setAddBy(?User $addBy): self
     {
         $this->addBy = $addBy;
 

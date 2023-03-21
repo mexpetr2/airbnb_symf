@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Appartment;
 use App\Form\AppartmentType;
+use App\Repository\AppartmentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,6 +33,20 @@ class AppartmentController extends AbstractController
         return $this->render('appartment/index.html.twig', [
             'controller_name' => 'AppartmentController',
             'form' => $form->createView(),
+        ]);
+    }
+
+
+    #[Route('/appartment/all', name: 'app_appartment')]
+    public function allAppartment(AppartmentRepository $appartments): Response
+    {
+
+        $all_appartment = $appartments->findAll();
+
+
+        return $this->render('appartment/all.html.twig', [
+            'controller_name' => 'AppartmentController',
+            'allAppartment' => $all_appartment,
         ]);
     }
 }
