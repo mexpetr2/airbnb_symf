@@ -33,8 +33,7 @@ class AppartmentType extends AbstractType
         ->add('category',EntityType::class,[
             'class' => Category::class,
             'choice_label' => 'title',
-            // 'mapped' => false,
-            'multiple' => true,
+
             'label' => false,
             'attr' => [
             ]

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appartment index{% endblock %}
+
+{% block body %}
+    <h1>Appartment index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Introduction</th>
+                <th>Slug</th>
+                <th>NbRoom</th>
+                <th>CreatedAt</th>
+                <th>ImageUrl</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appartment in appartments %}
+            <tr>
+                <td>{{ appartment.id }}</td>
+                <td>{{ appartment.title }}</td>
+                <td>{{ appartment.description }}</td>
+                <td>{{ appartment.price }}</td>
+                <td>{{ appartment.introduction }}</td>
+                <td>{{ appartment.slug }}</td>
+                <td>{{ appartment.nbRoom }}</td>
+                <td>{{ appartment.createdAt ? appartment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ appartment.imageUrl }}</td>
+                <td>
+                    <a href="{{ path('app_appartment_show', {'id': appartment.id}) }}">show</a>
+                    <a href="{{ path('app_appartment_edit', {'id': appartment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_appartment_new') }}">Create new</a>
+{% endblock %}

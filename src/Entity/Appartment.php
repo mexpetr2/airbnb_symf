@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\AppartmentRepository;
+use App\Entity\Category;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AppartmentRepository;
 
 #[ORM\Entity(repositoryClass: AppartmentRepository::class)]
 class Appartment

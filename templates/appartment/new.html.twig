@@ -1,5 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}New Appartment{% endblock %}
+
+{% block body %}
+    <h1>Create new Appartment</h1>
+
+    {{ include('appartment/_form.html.twig') }}
+
+    <a href="{{ path('app_index') }}">back to list</a>
+{% endblock %}
+
+{# {% extends 'base.html.twig' %}
+
 {% block title %}Hello AppartmentController!{% endblock %}
 
 {% block body %}
@@ -18,4 +30,5 @@
     {{ form_end(appartmentForm) }}
 
 </div>
-{% endblock %}
+{% endblock %} #}
+
