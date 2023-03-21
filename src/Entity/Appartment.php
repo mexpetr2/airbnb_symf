@@ -45,6 +45,9 @@ class Appartment
     #[ORM\ManyToOne(inversedBy: 'appartments')]
     private ?User $addBy = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $imageUrl = null;
+
     // #[ORM\ManyToOne(inversedBy: 'appartment', cascade: ['persist', 'remove'])]
     // #[ORM\JoinColumn(nullable: false)]
     // private ?user $addBy = null;
@@ -170,6 +173,18 @@ class Appartment
     public function setAddBy(?User $addBy): self
     {
         $this->addBy = $addBy;
+
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    public function setImageUrl(string $imageUrl): self
+    {
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }

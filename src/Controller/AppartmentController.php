@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Appartment;
 use App\Form\AppartmentType;
+use App\Services\UploadFiles;
 use App\Repository\AppartmentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -14,8 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AppartmentController extends AbstractController
 {
-    #[Route('/appartment', name: 'app_appartment')]
-    public function index(Request $request,EntityManagerInterface $entityManager,Security $security): Response
+    #[Route('/appartment/new', name: 'app_appartment_form')]
+    public function index(Request $request,EntityManagerInterface $entityManager,Security $security,UploadFiles $uploadFiles, AppartmentRepository $AppartmentRepo): Response
     {
 
         $appartment = new Appartment;
@@ -24,29 +25,26 @@ class AppartmentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $appartment -> setAddBy($this->getUser());
+            $appartment -> setCreatedAt(new \DateTimeImmutable());
+            $appartment -> setSlug($appartment->getTitle());
+
+            $image = $form->get('image')->getData();
+
+            $appartment->setImageUrl($uploadFiles->moveFile($image));  
+
+            $AppartmentRepo->save($appartment, true);
+
+
             $entityManager->persist($appartment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_user');
+            return $this->redirectToRoute('app_index');
         }
 
-        return $this->render('appartment/index.html.twig', [
+        return $this->render('appartment/appartment_form.html.twig', [
             'controller_name' => 'AppartmentController',
-            'form' => $form->createView(),
-        ]);
-    }
-
-
-    #[Route('/appartment/all', name: 'app_appartment')]
-    public function allAppartment(AppartmentRepository $appartments): Response
-    {
-
-        $all_appartment = $appartments->findAll();
-
-
-        return $this->render('appartment/all.html.twig', [
-            'controller_name' => 'AppartmentController',
-            'allAppartment' => $all_appartment,
+            'appartmentForm' => $form->createView(),
         ]);
     }
 }

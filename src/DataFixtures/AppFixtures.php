@@ -65,7 +65,7 @@ class AppFixtures extends Fixture
             $randomKeyUser = array_rand($all_user,1);
             $randomKeyCategory = array_rand($all_category,1);
 
-
+            $appartment -> setImageUrl($faker->imageUrl(640, 480, 'animals', true));
             $appartment -> setTitle($faker-> text());
             $appartment -> setDescription($faker->paragraph());
             $appartment -> setPrice((int) $faker->numberBetween(40, 600));
