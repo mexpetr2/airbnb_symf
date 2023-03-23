@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppartmentController!{% endblock %}
+
+{% block body %}
+
+    {% for appartment in allAppartment %}
+
+        {% include 'partials/_card.html.twig' %}
+        {# {% include 'partials/_nav.html.twig' %} #}
+
+    {% endfor %}
+
+</div>
+{% endblock %}

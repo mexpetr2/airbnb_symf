@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\AppartmentRepository;
+use App\Entity\Category;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AppartmentRepository;
 
 #[ORM\Entity(repositoryClass: AppartmentRepository::class)]
 class Appartment
@@ -44,6 +45,9 @@ class Appartment
 
     #[ORM\ManyToOne(inversedBy: 'appartments')]
     private ?User $addBy = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageUrl = null;
 
     // #[ORM\ManyToOne(inversedBy: 'appartment', cascade: ['persist', 'remove'])]
     // #[ORM\JoinColumn(nullable: false)]
@@ -170,6 +174,18 @@ class Appartment
     public function setAddBy(?User $addBy): self
     {
         $this->addBy = $addBy;
+
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    public function setImageUrl(string $imageUrl): self
+    {
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }

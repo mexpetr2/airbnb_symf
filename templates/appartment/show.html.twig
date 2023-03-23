@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appartment{% endblock %}
+
+{% block body %}
+    <h1>Appartment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ appartment.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ appartment.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ appartment.description }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ appartment.price }}</td>
+            </tr>
+            <tr>
+                <th>Introduction</th>
+                <td>{{ appartment.introduction }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ appartment.slug }}</td>
+            </tr>
+            <tr>
+                <th>NbRoom</th>
+                <td>{{ appartment.nbRoom }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ appartment.createdAt ? appartment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ImageUrl</th>
+                <td>{{ appartment.imageUrl }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_appartment_index') }}">back to list</a>
+
+    <a href="{{ path('app_appartment_edit', {'id': appartment.id}) }}">edit</a>
+
+    {{ include('appartment/_delete_form.html.twig') }}
+{% endblock %}
