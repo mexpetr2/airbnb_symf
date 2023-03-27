@@ -1,8 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 60px;
 }
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar li {
+  margin: 0 5px;
+}
+
+.navbar li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+/* .navbar li a:hover {
+    background-color: #eeeeee;
+} */
 
 .navbar ul {
   margin: 0;
@@ -86,6 +120,69 @@ body {
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+.airbnb {
+  height: 50px;
+  width: 50px;
+}
+
+/* form {
+    display: flex;
+    justify-content: center;
+}
+  
+input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    flex: 1;
+}
+  
+button[type="submit"] {
+    background-color: #008489;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer; 
+} */
+
+/* .barre {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+} */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input[type="text"] {
+  border: none;
+  flex: 1;
+  margin-right: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-bar button[type="submit"] {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.fa-search:before {
+  content: "\f002";
+  font-family: FontAwesome;
+  font-size: 16px;
+  color: #333;
 }
 
 .airbnb {

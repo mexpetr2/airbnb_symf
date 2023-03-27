@@ -1,11 +1,8 @@
-<div class="card">
-  <img src="{{appartment.imageUrl}}" alt="Airbnb" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">{{appartment.title}}</h5>
-    <p class="card-text">{{appartment.introduction}}</p>
-
-     {# {{  dump(appartment.reservations) }}  #}
-
-    <a href="{{path('app_reservation', { 'id_appartment': appartment.id })}}" class="btn btn-primary">Book Now</a>
+  <div class="description">
+    <img src="{{appartment.imageUrl}}" alt="Airbnb" class="card2">
+      <h5 class="card-title">{{appartment.title|slice(0,5)}}</h5>
+      <p class="card-text">{{appartment.introduction|slice(0,20)}}</p>
+      <a href="#
+      {{path('app_reservation', { 'id_appartment': appartment.id })}}" class="btn btn-primary">Book Now</a>
   </div>
-</div>
+
