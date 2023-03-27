@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "bootstrap-datepicker": "^1.9.0",
+    "moment": "^2.29.4",
+    "react-dates": "^21.8.0"
+  }
+}

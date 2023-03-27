@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "cocur/slugify": "^4.3",
+        "components/jquery": "^3.6",
         "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.8",
         "doctrine/doctrine-migrations-bundle": "^3.2",
@@ -42,6 +43,7 @@
         "symfony/validator": "6.2.*",
         "symfony/web-link": "6.2.*",
         "symfony/yaml": "6.2.*",
+        "twbs/bootstrap": "^5.2",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },

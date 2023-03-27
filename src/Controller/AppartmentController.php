@@ -30,21 +30,34 @@ class AppartmentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
+            ## Multiple image
+            // $images = $form['imageUrl']->getData();
+
+            // foreach ($images as $image){
+            //     $fileName = bin2hex(random_bytes(20)) . '' .uniqid() . ''.time().'.'.$image->guessExtension();
+            // }
+
+            $error = [];
+            if(!$this->getUser()){
+                $error[] = 'Veuillez vous connecté';
+                return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
+            }
+            else{
+
             $appartment -> setAddBy($this->getUser());
             $appartment -> setCreatedAt(new \DateTimeImmutable());
             $appartment -> setSlug($appartment->getTitle());
             // $appartment -> setCategory($form->get('category')->getData());
             
-
             $image = $form->get('imageUrl')->getData();
 
-            $appartment->setImageUrl($uploadFiles->moveFile($image));  
-
+            $appartment->setImageUrl($uploadFiles->moveFile($image));
 
             $appartmentRepository->save($appartment, true);
 
             return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->renderForm('appartment/new.html.twig', [

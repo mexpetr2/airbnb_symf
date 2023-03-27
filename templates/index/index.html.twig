@@ -4,10 +4,17 @@
 
 {% block body %}
 
+<ul>
+    {% for category in allCategory %}
+
+        <a href='{{ path('app_index_filtered',{filter: category.id})  }}'><li>{{category.title}}</li></a>
+
+    {% endfor %}
+
+<ul>
     {% for appartment in allAppartment %}
 
         {% include 'partials/_card.html.twig' %}
-        {# {% include 'partials/_nav.html.twig' %} #}
 
     {% endfor %}
 

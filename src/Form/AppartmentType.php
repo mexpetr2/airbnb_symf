@@ -28,7 +28,13 @@ class AppartmentType extends AbstractType
                 'placeholder' => "Entrez la description de l'annonce"
             ]
         ])
-        ->add('imageUrl',FileType::class)
+        ->add('imageUrl',FileType::class,[
+            ##Multiple image
+            // 'label'=>false,
+            // 'mapped'=>false,
+            // 'required'=>false,
+            // 'multiple' => true
+        ])
 
         ->add('category',EntityType::class,[
             'class' => Category::class,

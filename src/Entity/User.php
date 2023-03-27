@@ -21,6 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message: 'Veuillez saisir une adresse mail')]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -30,14 +31,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Veuillez saisir un mot de passe')]
     private ?string $password = null;
 
     #[ORM\OneToMany(mappedBy: 'addBy', targetEntity: Appartment::class)]
     private Collection $appartments;
 
+    #[ORM\OneToMany(mappedBy: 'reservedBy', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
     public function __construct()
     {
         $this->appartments = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     // #[ORM\OneToMany(mappedBy: 'addBy',  targetEntity: Appartment::class)]
@@ -154,6 +160,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($appartment->getAddBy() === $this) {
                 $appartment->setAddBy(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setReservedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getReservedBy() === $this) {
+                $reservation->setReservedBy(null);
             }
         }
 

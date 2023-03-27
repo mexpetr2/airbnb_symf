@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReservationController!{% endblock %}
+
+{% block body %}
+    {% if errors is defined %}
+
+        {% for error in errors %}
+            {% dump(error) %}
+
+            <div>{{error}}</div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    {{ form_start(reservationForm) }}
+    {{ form_widget(reservationForm) }}
+        {# {{ form_widget(reservationForm.date_start, {'attr': {'class': 'form-control', 'type': 'date', 'value': reservationForm.date_start.vars.value|date('d/m/Y')}}) }} #}
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(reservationForm) }}
+
+{% endblock %}

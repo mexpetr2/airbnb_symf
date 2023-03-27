@@ -1,0 +1,42 @@
+img {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.card1 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.description {
+  height: 500px;
+  width: 300px;
+}
+
+.menu {
+  display: flex;
+}
+
+/* .menu1 {
+    border: solid gray 1px;
+    border-radius: 20px;
+    padding: 6px;
+}
+.menu1:hover {
+    border-radius: 20px;
+} */
+
+.menu1 {
+  border: solid gray 1px;
+  border-radius: 20px;
+  padding: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.menu1:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

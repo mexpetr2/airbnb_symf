@@ -12,7 +12,9 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {# <script src="script.js"></script> #}
         {% endblock %}
+            <script src="{{ asset('assets/js/script.js') }}"></script>
     </head>
     <body>
         {% include 'partials/_nav.html.twig' %}
